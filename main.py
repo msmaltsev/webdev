@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 try:
     from os import getuid
 
@@ -15,11 +14,13 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     return '''Hello from Flask!
-<a href="/projects/">PROJECTS</a>'''
+<a href="/projects/">PROJECTS</a>
+<a href="/about/">ABOUT</a>'''
 
 @app.route('/projects/')
 def projects():
-    return 'The project page'
+    f = open('index.html', encoding='utf8').read()
+    return f
 
 @app.route('/about')
 def about():
