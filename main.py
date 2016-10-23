@@ -14,8 +14,16 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello from Flask!"
+    return '''Hello from Flask!
+<a href="/projects/">PROJECTS</a>'''
 
+@app.route('/projects/')
+def projects():
+    return 'The project page'
+
+@app.route('/about')
+def about():
+    return 'The about page'
 
 
 
