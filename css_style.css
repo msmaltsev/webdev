@@ -1,0 +1,44 @@
+#menu {
+	width: 750px;
+	height: 60px;
+	margin: 0 auto;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#menu li {
+	display: block;
+	float: left;
+	width: 148px;
+	height: 60px;
+	padding: 0 0 0 2px;
+	background: linear-gradient(to top, #78906e, #a3bc9c);
+}
+
+#menu a {
+	display: block;
+	width: 108px;
+	height: 36px;
+	padding: 20px 20px 0 20px;
+	background: none;
+	letter-spacing: -1px;
+	font: normal 1.6em Georgia, "Times New Roman", Times, serif;
+	color: #E1E9E2;
+	border-bottom: none;
+}
+
+#menu a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#menu .active a {
+	background: #E1E9E2;
+	border-bottom: 4px solid #E1E9E2;
+	text-decoration: none;
+	color: #749865;
+}
