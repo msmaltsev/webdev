@@ -6,15 +6,14 @@ except ImportError:
     def getuid():
         return 4000
 
-from flask import Flask
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    f = open('static/index.html', encoding='utf8').read()
-    return f
+    return render_template('index.html')
 
 @app.route('/about')
 def about():
