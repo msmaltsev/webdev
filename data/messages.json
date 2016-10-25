@@ -1,9 +1,20 @@
-[{
-  "title": "Заголовок",
-  "text": "Здесь очень хороший текст"
-},
-{
-  "title": "Заголовок2",
-  "text": "Здесь очень хороший текст222222"
-}
+[
+    {
+        "title": "first blood",
+        "text": "hi there",
+        "id": "0",
+        "date": "26.10.16, 00:44"
+    },
+    {
+        "id": "1",
+        "text": "...in our blog, welcome! please feel free to post whatever you want.",
+        "title": "we greet you",
+        "date": "26.10.16, 00:45"
+    },
+    {
+        "title": "...it's so lonely here...",
+        "text": "plase add something, our moderators are bored",
+        "id": "2",
+        "date": "26.10.16, 00:46"
+    }
 ]

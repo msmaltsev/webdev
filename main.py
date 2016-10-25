@@ -5,22 +5,43 @@ except ImportError:
     def getuid():
         return 4000
 
-from flask import Flask, render_template, render_template_string, request, jsonify
-import json
+from flask import Flask, render_template, render_template_string, request, jsonify, redirect
+import json, datetime
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET','POST'])
 def index():
     with open('templates/index.html', 'r', encoding="utf-8") as f:
         index_template = process_index(f.read())
     return render_template_string(index_template)
 
-@app.route("/post")
+@app.route("/post", methods=['GET','POST'])
 def post_message():
     with open('templates/post.html', 'r', encoding="utf-8") as f:
         index_template = process_index(f.read())
-    return render_template_string(index_template)  
+
+    return render_template_string(index_template)
+
+@app.route("/get_text", methods=['POST'])
+def get_text():
+    print(request.method)
+    if request.method == 'POST':
+        text = request.form['message']
+        title = request.form['title']
+        date = datetime.datetime.now().strftime('%d.%m.%y, %H:%M')
+        try:
+            with open('data/messages.json', 'r', encoding='utf8') as f:
+                d = json.load(f)
+        except:
+            d = []
+        id_ = len(d)
+        d.append({'id':str(id_), 'title':title, 'text':text, 'date':date})
+        fin = json.dumps(d, indent=4)
+        with open('data/messages.json', 'w', encoding='utf8') as f:
+            f.write(fin)
+
+    return redirect('/')
 
 @app.route("/about")
 def about():
