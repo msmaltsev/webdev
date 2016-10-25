@@ -113,8 +113,25 @@ a:hover {
    color: #232856;
 }
 
+#main_content .date {
+   color: #8888c4;
+   text-align: right;
+}
+
 #main_content .post .message {
    font: normal 1.3em Georgia, "Times New Roman", Times, serif;
    padding: 5px 10px;
    color: #40479e;
+}
+
+#about{
+   font: normal 1.3em Georgia, "Times New Roman", Times, serif;
+   padding: 20px 20px;
+   color: #40479e;
+}
+
+#main_content .create_post {
+  background: #d5d7ee;
+  border-radius: 20px 20px;
+  padding: 20px 20px;
 }
