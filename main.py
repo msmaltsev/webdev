@@ -16,6 +16,12 @@ def index():
         index_template = process_index(f.read())
     return render_template_string(index_template)
 
+@app.route("/post")
+def index_post():
+    with open('templates/post.html', 'r', encoding="utf-8") as f:
+        index_template = process_index(f.read())
+    return render_template_string(index_template)
+
 def get_message_template():
     with open('templates/message.html', 'r', encoding="utf-8") as f:
         return f.read()
