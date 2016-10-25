@@ -17,10 +17,10 @@ def index():
     return render_template_string(index_template)
 
 @app.route("/post")
-def index_post():
+def post_message():
     with open('templates/post.html', 'r', encoding="utf-8") as f:
         index_template = process_index(f.read())
-    return render_template_string(index_template)
+    return render_template_string(index_template)  
 
 def get_message_template():
     with open('templates/message.html', 'r', encoding="utf-8") as f:
@@ -35,7 +35,6 @@ def load_messages():
     with open('data/messages.json', 'r', encoding='utf-8') as messages_file:
         try:
             messages_json = json.load(messages_file)
-            print("lol")
         except:
             return []
     return messages_json
