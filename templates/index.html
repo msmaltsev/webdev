@@ -7,28 +7,21 @@
   <meta name="author" content="Maltsev M.,Samoylenko I.">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
  </head>
-
 <body>
-  <div id ="menu_header_background">
+  <div id="menu_header_background">
     <div id="menu">
       <ul>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="Login.html">Login</a></li>
+        <li><a href="login.html">Login</a></li>
         <li><a href="register.html">Register</a></li>
       </ul>
     </div>
-
     <div id="header">
       <h1>The Blog Service</h1>
       <h2>by Maltsev and Samoylenko</h2>
     </div>
   </div>
-  <div>
-    <a>Заголовок</a>
-    </br>
-    <a>Текст записи. Текст записи. Текст записи. Текст записи. Текст записи. Текст записи. </a>
-  </div>
+  %messages_content%
 </body>
 </html>
