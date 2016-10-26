@@ -1,14 +1,14 @@
 [
     {
-        "title": "first blood",
+        "title": "first record",
         "text": "hi there",
         "id": "0",
         "date": "26.10.16, 00:44"
     },
     {
-        "id": "1",
-        "text": "...in our blog, welcome! please feel free to post whatever you want.",
         "title": "we greet you",
+        "text": "...in our blog, welcome! please feel free to post whatever you want.",
+        "id": "1",
         "date": "26.10.16, 00:45"
     },
     {
@@ -16,5 +16,11 @@
         "text": "plase add something, our moderators are bored",
         "id": "2",
         "date": "26.10.16, 00:46"
+    },
+    {
+        "title": "Smyek",
+        "text": "First post made by Smyek! I really like it... (no)",
+        "id": "3",
+        "date": "26.10.16, 01:55"
     }
 ]

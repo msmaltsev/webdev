@@ -5,7 +5,7 @@ except ImportError:
     def getuid():
         return 4000
 
-from flask import Flask, render_template, render_template_string, request, jsonify, redirect
+from flask import Flask, render_template_string, request, redirect
 import json, datetime
 
 app = Flask(__name__)
@@ -20,27 +20,18 @@ def index():
 def post_message():
     with open('templates/post.html', 'r', encoding="utf-8") as f:
         index_template = process_index(f.read())
-
     return render_template_string(index_template)
 
 @app.route("/get_text", methods=['POST'])
 def get_text():
-    print(request.method)
     if request.method == 'POST':
         text = request.form['message']
         title = request.form['title']
         date = datetime.datetime.now().strftime('%d.%m.%y, %H:%M')
-        try:
-            with open('data/messages.json', 'r', encoding='utf8') as f:
-                d = json.load(f)
-        except:
-            d = []
-        id_ = len(d)
-        d.append({'id':str(id_), 'title':title, 'text':text, 'date':date})
-        fin = json.dumps(d, indent=4)
-        with open('data/messages.json', 'w', encoding='utf8') as f:
-            f.write(fin)
-
+        messages_json = load_messages()
+        id_ = len(messages_json)
+        messages_json.append({'id':str(id_), 'title':title, 'text':text, 'date':date})
+        save_messages(messages_json)
     return redirect('/')
 
 @app.route("/about")
@@ -66,6 +57,12 @@ def load_messages():
             return []
     return messages_json
 
+def save_messages(messages_json):
+    fin = json.dumps(messages_json, indent=4)
+    with open('data/messages.json', 'w', encoding='utf-8') as f:
+        f.write(fin)
+
+
 def message_htmlfy(message, message_template):
     for key in message:
         message_template = message_template.replace('%{0}%'.format(key), message[key])
@@ -76,7 +73,7 @@ def messages_block(index_template="%messages_content%"):
     message_template = get_html_template("message.html")
     if messages_json:
         replacer = []
-        for message in messages_json:
+        for message in reversed(messages_json):
             replacer.append(message_htmlfy(message, message_template))
         replacer = "<br/>".join(replacer)
     else:

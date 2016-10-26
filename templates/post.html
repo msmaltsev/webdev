@@ -15,15 +15,22 @@
       </ul>
     </div>
     <div id="header">
-      <h1>Enter some text</h1>
-    <h2>(it will be converted to uppercase)</h2>
-    <form action="/get_text" method="POST">
-    	<input type="text" name="title" placeholder="Введите заголовок">
-        <input type="text" name="message" placeholder="Введите текст">
-        <input type="submit" name="my-form" value="Send">
-    </form>
+      <h1>The Blog Service</h1>
+      <h2>by Maltsev and Samoylenko</h2>
     </div>
   </div>
-  %messages_content%
+  <div id="main_content">
+    <div class="create_post">
+      <form action="/get_text" method="POST">
+        <input type="text" name="title" size=50 placeholder="Заголовок сообщения">
+        </br></br>
+        <textarea name="message" cols="75" rows="8" placeholder="Введите текст сообщения"></textarea>
+        </br>
+        <input type="submit" name="my-form" value="Send">
+      </form>
+    </div>
+    </br></br>
+    %messages_content%
+  </div>
 </body>
 </html>
