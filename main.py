@@ -34,6 +34,13 @@ def get_text():
         save_messages(messages_json)
     return redirect('/')
 
+@app.route("/remove_msg", methods=['GET', 'POST'])
+def remove_msg():
+    if request.method == 'POST':
+        id = request.form['id']
+        remove_msg_from_json(id)
+    return redirect('/')
+
 @app.route("/about")
 def about():
     with open('templates/about.html', 'r', encoding="utf-8") as f:
@@ -45,9 +52,17 @@ def get_html_template(filename):
         return f.read()
 
 def process_index(index_template):
-    for processor in [messages_block, menu_block]:
+    for processor in [messages_block]:
         index_template = processor(index_template)
     return index_template
+
+def remove_msg_from_json(id):
+    messages_json = load_messages()
+    for msg in messages_json:
+        if msg["id"] == id:
+            messages_json.remove(msg)
+            break
+    save_messages(messages_json)
 
 def load_messages():
     with open('data/messages.json', 'r', encoding='utf-8') as messages_file:
@@ -79,10 +94,6 @@ def messages_block(index_template="%messages_content%"):
     else:
         replacer = "No messages"
     return index_template.replace("%messages_content%", replacer)
-
-def menu_block(index_template="%menu%"):
-    menu_template = get_html_template("menu.html")
-    return index_template.replace("%menu%", menu_template)
 
 if __name__ == "__main__":
     app.run(port=getuid() + 1000)
