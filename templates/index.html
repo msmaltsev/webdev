@@ -20,7 +20,19 @@
     </div>
   </div>
   <div id="main_content">
-    %messages_content%
+  
+  {% for message in messages_json %}
+  <div class="post">
+    <h1>{{ message.title }}</h1>
+    </br>
+    <div class="message">{{ message.text }}</div>
+    <form action="/remove_msg" method="POST">
+        <input type="hidden" name="id" value="{{ message.id }}"/>
+        <input type="submit" value="X" />
+    </form>
+    <div class="date">{{ message.date }}</div>
+  </div>
+  {% endfor %}
   </div>
 </body>
 </html>
