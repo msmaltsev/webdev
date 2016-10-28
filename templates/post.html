@@ -26,11 +26,11 @@
         </br></br>
         <textarea name="message" cols="75" rows="8" placeholder="Введите текст сообщения"></textarea>
         </br>
-        <input type="submit" name="my-form" value="Send">
+        <input id="post_btn" type="submit" name="my-form" value="Send">
       </form>
     </div>
     </br></br>
-    %messages_content%
+    {% include 'messages.html' %}
   </div>
 </body>
 </html>
