@@ -4,8 +4,8 @@
     </br>
     <div class="message">{{ message.text }}</div>
     <form action="/remove_msg" method="POST">
-        <input type="hidden" name="id" value={{ message.id }}/>
-        <input type="submit" value="X" />
+        <input type="hidden" name="id" value="{{ message.id }}"/>
+        <input id="remove_btn" type="submit" value="Remove" />
     </form>
     <div class="date">{{ message.date }}</div>
   </div>

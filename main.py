@@ -12,13 +12,12 @@ app = Flask(__name__, template_folder='templates')
 
 @app.route("/", methods=['GET','POST'])
 def index():
-    msgs = load_messages()
-    return render_template('index.html', messages_json=msgs)
+    return render_template('index.html', messages_json=load_messages())
 
 
 @app.route("/post", methods=['GET','POST'])
 def post_message():
-    return render_template('post.html')
+    return render_template('post.html', messages_json=load_messages())
 
 
 @app.route("/get_text", methods=['POST'])
@@ -47,11 +46,6 @@ def about():
     return render_template('about.html')
 
 
-def get_html_template(filename):
-    with open('%s' % filename, 'r', encoding="utf-8") as f:
-        return f.read()
-
-
 def remove_msg_from_json(id):
     messages_json = load_messages()
     for msg in messages_json:
@@ -67,7 +61,7 @@ def load_messages():
             messages_json = json.load(messages_file)
         except:
             return []
-    return messages_json
+    return messages_json[::-1]
 
 
 def save_messages(messages_json):
@@ -77,5 +71,4 @@ def save_messages(messages_json):
 
 
 if __name__ == "__main__":
-    print(type(load_messages()))
     app.run(port=getuid() + 1000)
